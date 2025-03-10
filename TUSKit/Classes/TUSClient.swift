@@ -184,6 +184,11 @@ public class TUSClient: NSObject, URLSessionTaskDelegate {
                     createOrResume(forUpload: upload, withRetries: retries)
                     return
                 }
+            } else {
+                if fileManager.deleteFile(withName: fileName) {
+                    createOrResume(forUpload: upload, withRetries: retries)
+                }
+                return
             }
         }
 
